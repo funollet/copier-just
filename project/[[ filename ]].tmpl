@@ -1,0 +1,30 @@
+# [[ filename ]]
+#
+# https://github.com/casey/just
+
+var := "hello, world"
+
+
+# show available commands
+help:
+  @just -l
+
+
+# do something longer using a variable
+echo:
+    #!/usr/bin/env bash
+    set -euxo pipefail
+    if [ "{{var}}" != "false" ] ; then
+        echo "{{var}}"
+    fi
+
+
+# do something shorter using a variable
+echo-short:
+    @[ "{{var}}" != "false" ] && echo "{{var}}"
+
+# use an argument
+say-hi name="world":
+    @echo "hi, {{name}}"
+
+# vim: ft=just
