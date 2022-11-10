@@ -1,4 +1,4 @@
-# [[ filename ]]
+# {{ filename }}
 #
 # https://github.com/casey/just
 
@@ -11,20 +11,22 @@ help:
 
 
 # do something longer using a variable
-echo:
+echo:{% raw %}
     #!/usr/bin/env bash
     set -euxo pipefail
     if [ "{{var}}" != "false" ] ; then
         echo "{{var}}"
     fi
-
+{% endraw %}
 
 # do something shorter using a variable
-echo-short:
+echo-short:{% raw %}
     @[ "{{var}}" != "false" ] && echo "{{var}}"
+{% endraw %}
 
 # use an argument
-say-hi name="world":
+say-hi name="world":{% raw %}
     @echo "hi, {{name}}"
+{% endraw %}
 
 # vim: ft=just
